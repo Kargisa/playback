@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://btw3h1tkkk0xt"]
+
+[ext_resource type="PackedScene" uid="uid://cokat06qo1y4u" path="res://Scenes/player.tscn" id="1_ebmjs"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wrm1d"]
+friction = 0.98
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qxrlw"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+process_callback = 0
+
+[node name="Player" parent="." instance=ExtResource("1_ebmjs")]
+scale = Vector2(0.25, 0.25)
+
+[node name="WorldFloor" type="StaticBody2D" parent="."]
+position = Vector2(2, 57)
+physics_material_override = SubResource("PhysicsMaterial_wrm1d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldFloor"]
+shape = SubResource("WorldBoundaryShape2D_qxrlw")

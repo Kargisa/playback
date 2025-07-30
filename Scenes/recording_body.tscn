@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkhb1diuuajsw"]
+
+[ext_resource type="Script" uid="uid://js2ef0rn2mwg" path="res://Scripts/recording_body.gd" id="1_it7nd"]
+[ext_resource type="Texture2D" uid="uid://bd1hb7kr6hqv2" path="res://Assets/464806d7-2c46-4064-ac2a-d28cb8e7e928-profile_image-300x300.png" id="1_k6ckj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_it7nd"]
+size = Vector2(301, 301)
+
+[node name="Recording_Body" type="CharacterBody2D"]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_it7nd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3, 0)
+texture = ExtResource("1_k6ckj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.5, -1.5)
+shape = SubResource("RectangleShape2D_it7nd")
