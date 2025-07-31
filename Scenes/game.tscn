@@ -37,7 +37,6 @@ tile_set = SubResource("TileSet_3dryh")
 
 [node name="Player" parent="." instance=ExtResource("1_ebmjs")]
 position = Vector2(-1, 0)
-JUMP_VELOCITY = -150.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 scale = Vector2(4, 4)
