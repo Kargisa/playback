@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfxdnwmo53uf7"]
+
+[ext_resource type="Script" uid="uid://b0dlbfibabm76" path="res://Scripts/timed_checkpoint_manager.gd" id="1_opfdh"]
+
+[node name="TimedCheckpointManager" type="Node"]
+script = ExtResource("1_opfdh")
