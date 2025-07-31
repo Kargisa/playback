@@ -1,25 +1,61 @@
-[gd_scene load_steps=4 format=3 uid="uid://btw3h1tkkk0xt"]
+[gd_scene load_steps=7 format=4 uid="uid://btw3h1tkkk0xt"]
 
 [ext_resource type="PackedScene" uid="uid://cokat06qo1y4u" path="res://Scenes/player.tscn" id="1_ebmjs"]
+[ext_resource type="Shader" uid="uid://bupt0j8nk5i7n" path="res://Shaders/crt.gdshader" id="2_qxrlw"]
+[ext_resource type="Texture2D" uid="uid://ucwj8bsue0on" path="res://Assets/Tileset.png" id="3_wrm1d"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wrm1d"]
-friction = 0.98
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wrm1d"]
+texture = ExtResource("3_wrm1d")
+2:7/0 = 0
+0:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+1:0/0 = 0
+1:4/0 = 0
+1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+3:0/0 = 0
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qxrlw"]
+[sub_resource type="TileSet" id="TileSet_3dryh"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_wrm1d")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wrm1d"]
+shader = ExtResource("2_qxrlw")
+shader_parameter/brightnessMult = 2.0
+shader_parameter/wiggleMult = 0.0
+shader_parameter/chromaticAberrationOffset = 0.001
 
 [node name="Game" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(12.57, 12.57)
-process_callback = 0
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(-7, -32)
+tile_map_data = PackedByteArray("AAD4/wMAAAAAAAAAAAD4/wQAAAAAAAEAAAD5/wMAAAABAAEAAAD5/wQAAAACAAEAAAD6/wMAAAABAAAAAAD6/wQAAAABAAEAAAD7/wMAAAACAAAAAAD7/wQAAAACAAEAAAD8/wMAAAABAAAAAAD8/wQAAAABAAEAAAD9/wMAAAACAAAAAAD9/wQAAAACAAEAAAD+/wMAAAABAAAAAAD+/wQAAAABAAEAAAD//wMAAAACAAAAAAD//wQAAAACAAEAAAAAAAMAAAABAAAAAAAAAAQAAAABAAEAAAABAAMAAAACAAAAAAABAAQAAAACAAEAAAACAAMAAAABAAAAAAACAAQAAAABAAEAAAADAAMAAAACAAAAAAADAAQAAAACAAEAAAAEAAMAAAABAAAAAAAEAAQAAAABAAEAAAAFAAMAAAACAAAAAAAFAAQAAAACAAEAAAAGAAMAAAABAAAAAAAGAAQAAAABAAEAAAAHAAMAAAADAAAAAAAHAAQAAAADAAEAAAD4/wEAAAAAAAAAAAD4/wIAAAAAAAEAAAD5/wEAAAABAAAAAAD5/wIAAAABAAAAAAD6/wEAAAABAAAAAAD6/wIAAAABAAEAAAD7/wEAAAACAAAAAAD7/wIAAAACAAEAAAD8/wEAAAABAAAAAAD8/wIAAAABAAEAAAD9/wEAAAACAAAAAAD9/wIAAAACAAEAAAD+/wEAAAABAAAAAAD+/wIAAAABAAEAAAD//wEAAAACAAAAAAD//wIAAAACAAEAAAAAAAEAAAABAAAAAAAAAAIAAAABAAEAAAABAAEAAAACAAAAAAABAAIAAAACAAEAAAACAAEAAAABAAAAAAACAAIAAAABAAEAAAADAAEAAAACAAAAAAADAAIAAAACAAEAAAAEAAEAAAABAAAAAAAEAAIAAAABAAEAAAAFAAEAAAACAAAAAAAFAAIAAAACAAEAAAAGAAEAAAABAAAAAAAGAAIAAAABAAEAAAAHAAEAAAADAAAAAAAHAAIAAAADAAEAAAD4/wUAAAABAAQAAAD5/wUAAAABAAQAAAD6/wUAAAABAAQAAAD7/wUAAAABAAQAAAD8/wUAAAABAAQAAAD9/wUAAAABAAQAAAD+/wUAAAABAAQAAAD//wUAAAABAAQAAAAAAAUAAAABAAQAAAABAAUAAAABAAQAAAACAAUAAAABAAQAAAADAAUAAAABAAQAAAAEAAUAAAABAAQAAAAFAAUAAAABAAQAAAAGAAUAAAABAAQAAAAHAAUAAAABAAQAAAD4/wYAAAACAAcAAAD5/wYAAAACAAcAAAD6/wYAAAACAAcAAAD7/wYAAAACAAcAAAD8/wYAAAACAAcAAAD9/wYAAAACAAcAAAD+/wYAAAACAAcAAAD+/wcAAAACAAcAAAD//wcAAAACAAcAAAAAAAcAAAACAAcAAAABAAcAAAACAAcAAAABAAYAAAACAAcAAAACAAYAAAACAAcAAAADAAYAAAACAAcAAAAEAAYAAAACAAcAAAAFAAYAAAACAAcAAAAGAAYAAAACAAcAAAAHAAYAAAACAAcAAAAAAAYAAAACAAcAAAD//wYAAAACAAcAAAD9/wcAAAACAAcAAAD8/wcAAAACAAcAAAD7/wcAAAACAAcAAAD6/wcAAAACAAcAAAD5/wcAAAACAAcAAAD4/wcAAAACAAcAAAACAAcAAAACAAcAAAADAAcAAAACAAcAAAAEAAcAAAACAAcAAAAFAAcAAAACAAcAAAAGAAcAAAACAAcAAAAHAAcAAAACAAcAAAA=")
+tile_set = SubResource("TileSet_3dryh")
 
 [node name="Player" parent="." instance=ExtResource("1_ebmjs")]
+position = Vector2(-1, 0)
 scale = Vector2(0.25, 0.25)
 JUMP_VELOCITY = -150.0
 
-[node name="WorldFloor" type="StaticBody2D" parent="."]
-position = Vector2(0, 26)
-physics_material_override = SubResource("PhysicsMaterial_wrm1d")
+[node name="Camera2D" type="Camera2D" parent="Player"]
+scale = Vector2(4, 4)
+zoom = Vector2(5, 5)
+process_callback = 0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldFloor"]
-shape = SubResource("WorldBoundaryShape2D_qxrlw")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_wrm1d")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
