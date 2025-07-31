@@ -175,6 +175,10 @@ color = Color(0.817979, 0.706275, 0.662668, 1)
 blend_mode = 1
 
 [node name="TimedCheckpointManager" parent="." instance=ExtResource("4_3dryh")]
+time = 2.0
 
 [node name="TimedCheckpoint" parent="TimedCheckpointManager" instance=ExtResource("5_wowpa")]
-position = Vector2(63, 39)
+position = Vector2(89, 71)
+
+[node name="TimedCheckpoint2" parent="TimedCheckpointManager" instance=ExtResource("5_wowpa")]
+position = Vector2(157, 72)

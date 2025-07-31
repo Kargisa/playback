@@ -4,3 +4,7 @@
 
 [node name="TimedCheckpointManager" type="Node"]
 script = ExtResource("1_opfdh")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+ignore_time_scale = true

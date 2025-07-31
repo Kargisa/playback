@@ -1,4 +1,3 @@
-@tool
 extends Node2D
 
 class_name TimedCheckpoint
@@ -12,17 +11,19 @@ class_name TimedCheckpoint
 signal onCheckpintEnter
 
 func onBodyEnter(body: Node) -> void:
-	print("ENTER")
+	if body is not CharacterBody2D:
+		return
+	
+	onCheckpintEnter.emit(self)
 	pass
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	(collider.shape as CircleShape2D).radius = radius
 	area.body_entered.connect(onBodyEnter)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		(collider.shape as CircleShape2D).radius = radius
 		
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	pass
