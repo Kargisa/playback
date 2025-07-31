@@ -10,14 +10,15 @@ friction = 0.98
 [node name="Game" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+zoom = Vector2(12.57, 12.57)
 process_callback = 0
 
 [node name="Player" parent="." instance=ExtResource("1_ebmjs")]
 scale = Vector2(0.25, 0.25)
+JUMP_VELOCITY = -150.0
 
 [node name="WorldFloor" type="StaticBody2D" parent="."]
-position = Vector2(2, 57)
+position = Vector2(0, 26)
 physics_material_override = SubResource("PhysicsMaterial_wrm1d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldFloor"]

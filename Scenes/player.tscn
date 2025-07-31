@@ -1,22 +1,51 @@
-[gd_scene load_steps=5 format=3 uid="uid://cokat06qo1y4u"]
+[gd_scene load_steps=9 format=3 uid="uid://cokat06qo1y4u"]
 
 [ext_resource type="Script" uid="uid://dddb3ymcdl8xs" path="res://Scripts/player_movement.gd" id="1_6t5aa"]
-[ext_resource type="Texture2D" uid="uid://bd1hb7kr6hqv2" path="res://Assets/464806d7-2c46-4064-ac2a-d28cb8e7e928-profile_image-300x300.png" id="1_v0iea"]
 [ext_resource type="PackedScene" uid="uid://c6s3nugg8n816" path="res://Scenes/recording_manager.tscn" id="3_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://cxe7e32hg74r3" path="res://Assets/slime/basic_slime_idle.png" id="3_vgqql"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
-size = Vector2(301, 301)
+[sub_resource type="CircleShape2D" id="CircleShape2D_6t5aa"]
+radius = 6.08276
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkybt"]
+atlas = ExtResource("3_vgqql")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3wgy"]
+atlas = ExtResource("3_vgqql")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3smsa"]
+atlas = ExtResource("3_vgqql")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f1ek2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkybt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3wgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3smsa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_6t5aa")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-3, 0)
-texture = ExtResource("1_v0iea")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3.5, -1.5)
-shape = SubResource("RectangleShape2D_cvnsp")
+shape = SubResource("CircleShape2D_6t5aa")
 
 [node name="RecordingManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_6t5aa")]
 player = NodePath("..")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_f1ek2")
+autoplay = "default"
+frame_progress = 0.532628
