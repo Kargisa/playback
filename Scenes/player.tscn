@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cxe7e32hg74r3" path="res://Assets/slime/basic_slime_idle.png" id="3_vgqql"]
 [ext_resource type="Texture2D" uid="uid://bkur8fydpuhcj" path="res://Assets/slime/basic_slime_running_high.png" id="5_fkybt"]
 [ext_resource type="Texture2D" uid="uid://bsflgon17sevo" path="res://Assets/slime/basic_slime_jump.png" id="5_x3wgy"]
-[ext_resource type="Script" uid="uid://cqij5evm5ohcf" path="res://Scripts/player_animation_manager.gd" id="7_3smsa"]
+[ext_resource type="Script" path="res://Scripts/player_animation_manager.gd" id="7_3smsa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6t5aa"]
 radius = 6.08276

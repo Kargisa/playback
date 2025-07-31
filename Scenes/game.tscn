@@ -139,10 +139,7 @@ tile_map_data = PackedByteArray("AAD4/wUAAAAAAAQAAAD5/wUAAAAAAAQAAAD6/wUAAAAAAAQ
 tile_set = SubResource("TileSet_i6g32")
 
 [node name="Player" parent="." instance=ExtResource("1_ebmjs")]
-position = Vector2(-1, 0)
 position = Vector2(0, 55)
-SPEED = 120.0
-JUMP_VELOCITY = -250.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 scale = Vector2(4, 4)
