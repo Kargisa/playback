@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cxe7e32hg74r3" path="res://Assets/slime/basic_slime_idle.png" id="3_vgqql"]
 [ext_resource type="Texture2D" uid="uid://bkur8fydpuhcj" path="res://Assets/slime/basic_slime_running_high.png" id="5_fkybt"]
 [ext_resource type="Texture2D" uid="uid://bsflgon17sevo" path="res://Assets/slime/basic_slime_jump.png" id="5_x3wgy"]
-[ext_resource type="Script" path="res://Scripts/player_animation_manager.gd" id="7_3smsa"]
+[ext_resource type="Script" uid="uid://cqij5evm5ohcf" path="res://Scripts/player_animation_manager.gd" id="7_3smsa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6t5aa"]
 radius = 6.08276
@@ -67,13 +67,13 @@ region = Rect2(16, 0, 16, 16)
 atlas = ExtResource("5_fkybt")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tx1dd"]
-atlas = ExtResource("5_fkybt")
-region = Rect2(64, 0, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_gymyn"]
 atlas = ExtResource("5_fkybt")
 region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx1dd"]
+atlas = ExtResource("5_fkybt")
+region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fs7ks"]
 atlas = ExtResource("5_x3wgy")
@@ -149,10 +149,10 @@ animations = [{
 "texture": SubResource("AtlasTexture_f1ek2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tx1dd")
+"texture": SubResource("AtlasTexture_gymyn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gymyn")
+"texture": SubResource("AtlasTexture_tx1dd")
 }],
 "loop": true,
 "name": &"RUN",
@@ -181,7 +181,7 @@ player = NodePath("..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("player_node")]
 sprite_frames = SubResource("SpriteFrames_f1ek2")
-animation = &"SPLAT"
+animation = &"RUN"
 autoplay = "IDLE"
 script = ExtResource("7_3smsa")
 player_node = NodePath("..")

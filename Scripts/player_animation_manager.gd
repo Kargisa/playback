@@ -1,6 +1,8 @@
 extends AnimatedSprite2D
 
 @export var player_node: CharacterBody2D
+@export var falling_velocity_thresholds : Array[float] = [120.0, 280.0]
+@export var jumping_velocity_thresholds : Array[float] = [120.0, 200.0, 280.0]
 
 enum PlayerState {
 	IDLE,
@@ -28,6 +30,8 @@ func _process(_delta: float) -> void:
 	
 	if player_node.velocity.x != 0:
 			flip_h = player_node.velocity.x > 0
+	
+	update_velocity_based_animations()
 	
 	if is_playing_splat:
 		return
@@ -74,6 +78,31 @@ func set_state(new_state):
 		
 	current_state = new_state
 	play_animation(current_state)
+	
+func update_velocity_based_animations():
+	var speed_y = abs(player_node.velocity.y)
+	
+	print(speed_y)
+	
+	match current_state:
+		PlayerState.FALLING:
+			set_velocity_based_frame("FALLING", speed_y, falling_velocity_thresholds, false)
+		PlayerState.JUMP:
+			set_velocity_based_frame("JUMP", speed_y, jumping_velocity_thresholds, true)
+
+func set_velocity_based_frame(anim_name: String, speed: float, thresholds: Array[float], reverse_order: bool):
+	var target_frame = 0
+	
+	for i in range(thresholds.size()):
+		if speed >= thresholds[i]:
+			target_frame = i + 1
+	
+	if reverse_order:
+		var max_frame = sprite_frames.get_frame_count(anim_name) - 1
+		target_frame = max_frame - target_frame
+	
+	target_frame = clamp(target_frame, 0, sprite_frames.get_frame_count(anim_name) - 1)
+	frame = target_frame
 
 func play_animation(state: PlayerState):
 	var anim_name = "IDLE"
