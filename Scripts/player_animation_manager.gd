@@ -124,3 +124,4 @@ func play_animation(state: PlayerState):
 			anim_name = "DIE"
 	
 	play(anim_name)
+	update_velocity_based_animations()

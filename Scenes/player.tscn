@@ -181,7 +181,7 @@ player = NodePath("..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("player_node")]
 sprite_frames = SubResource("SpriteFrames_f1ek2")
-animation = &"FALLING"
+animation = &"JUMP"
 autoplay = "IDLE"
 script = ExtResource("7_3smsa")
 player_node = NodePath("..")
