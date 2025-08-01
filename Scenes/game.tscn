@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=4 uid="uid://btw3h1tkkk0xt"]
+[gd_scene load_steps=18 format=4 uid="uid://btw3h1tkkk0xt"]
 
 [ext_resource type="PackedScene" uid="uid://cokat06qo1y4u" path="res://Scenes/player.tscn" id="1_ebmjs"]
 [ext_resource type="Shader" uid="uid://bupt0j8nk5i7n" path="res://Shaders/crt.gdshader" id="2_qxrlw"]
 [ext_resource type="Texture2D" uid="uid://ucwj8bsue0on" path="res://Assets/Tileset.png" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://dfxdnwmo53uf7" path="res://Scenes/timed_checkpoint_manager.tscn" id="4_3dryh"]
 [ext_resource type="PackedScene" uid="uid://crdnmjmmbx87w" path="res://Scenes/timed_checkpoint.tscn" id="5_wowpa"]
+[ext_resource type="PackedScene" uid="uid://bgywnqw7wx5p2" path="res://Scenes/recorder.tscn" id="6_i6g32"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i6g32"]
 texture = ExtResource("3_wrm1d")
@@ -182,3 +183,8 @@ position = Vector2(89, 71)
 
 [node name="TimedCheckpoint2" parent="TimedCheckpointManager" instance=ExtResource("5_wowpa")]
 position = Vector2(157, 72)
+
+[node name="Recorder" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_i6g32")]
+position = Vector2(-56, 70)
+target = NodePath("../Player")
+rewind_speed_mult = null

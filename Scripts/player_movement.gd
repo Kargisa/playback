@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 @export var SPEED : float = 80.0
 @export var SPEED_MULT_WHILE_CHARGING : float = 0.5
@@ -17,9 +18,6 @@ var jump_velocity = 0.0
 var is_grounded = false
 
 func _physics_process(delta: float) -> void:
-	if $RecordingManager.isReverting:
-		return
-		
 	var actual_speed = SPEED
 	
 	if not is_grounded and is_on_floor():
@@ -47,7 +45,6 @@ func _physics_process(delta: float) -> void:
 		
 		if is_grounded:
 			velocity.y = jump_velocity
-		
 		
 	
 	var direction := Input.get_axis("move_left", "move_right")

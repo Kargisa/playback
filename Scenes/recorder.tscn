@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgywnqw7wx5p2"]
+
+[ext_resource type="Script" uid="uid://df4cdugrepnwi" path="res://Scripts/recorder.gd" id="1_77o4p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfmwr"]
+
+[node name="Recorder" type="Area2D"]
+script = ExtResource("1_77o4p")
+rewind_speed_mult = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gfmwr")
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 5.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
