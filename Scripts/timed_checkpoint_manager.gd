@@ -14,14 +14,16 @@ func allCheckpointsCollected() -> void:
 	
 func failedToCollectAllCheckpoints() -> void:
 	print("Faild to collect all checkpoints")
+	
+	for checkpoint in collectedCheckpoints:
+		checkpoint.resetCheckpoint()
+	
 	collectedCheckpoints.clear()
 
 func onTimerFinished() -> void:
 	if collectedCheckpoints.size() < checkpoints.size():
 		failedToCollectAllCheckpoints()
 		return
-
-
 
 func onCkeckpointEnter(checkpoint: TimedCheckpoint) -> void:
 	if collectedCheckpoints.size() <= 0:
@@ -31,6 +33,7 @@ func onCkeckpointEnter(checkpoint: TimedCheckpoint) -> void:
 		return
 		
 	collectedCheckpoints.append(checkpoint)
+	#checkpoint.collectCheckpoint()
 	print("Checkpoint collected")
 	
 	if collectedCheckpoints.size() >= checkpoints.size():
