@@ -82,8 +82,6 @@ func set_state(new_state):
 func update_velocity_based_animations():
 	var speed_y = abs(player_node.velocity.y)
 	
-	print(speed_y)
-	
 	match current_state:
 		PlayerState.FALLING:
 			set_velocity_based_frame("FALLING", speed_y, falling_velocity_thresholds, false)
