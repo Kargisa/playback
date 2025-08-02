@@ -1,0 +1,98 @@
+[gd_scene load_steps=11 format=3 uid="uid://xwom5hwpouls"]
+
+[ext_resource type="FontFile" uid="uid://drib8ovbrm2vg" path="res://Assets/UI/Jersey_15/Jersey15-Regular.ttf" id="1_gek4i"]
+[ext_resource type="Script" uid="uid://dne88g32vabjo" path="res://Scripts/quit_button.gd" id="2_bw2rt"]
+[ext_resource type="Script" uid="uid://dyftl1t0u6dtt" path="res://Scripts/game_ui.gd" id="2_gjn1n"]
+[ext_resource type="Script" uid="uid://cjxecxni16sv2" path="res://Scripts/base_menu.gd" id="2_x63ue"]
+[ext_resource type="Script" uid="uid://5dqqao6s4uc6" path="res://Scripts/play_button.gd" id="2_xjnnq"]
+
+[sub_resource type="Theme" id="Theme_bw2rt"]
+default_font = ExtResource("1_gek4i")
+default_font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gjn1n"]
+bg_color = Color(0, 0, 0, 0.553)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gjn1n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1t2s1"]
+bg_color = Color(0, 0, 0, 0.552941)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3t1kc"]
+
+[node name="GameUI" type="Control"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_bw2rt")
+script = ExtResource("2_gjn1n")
+
+[node name="GameUI" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenu" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BaseMenu" type="MarginContainer" parent="MainMenu"]
+layout_mode = 2
+script = ExtResource("2_x63ue")
+
+[node name="ColorRect" type="ColorRect" parent="MainMenu/BaseMenu"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.15)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu/BaseMenu"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MainMenu/BaseMenu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="PlayButton" type="Button" parent="MainMenu/BaseMenu/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 84
+theme_override_styles/hover = SubResource("StyleBoxFlat_gjn1n")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gjn1n")
+text = "   PLAY"
+alignment = 0
+script = ExtResource("2_xjnnq")
+
+[node name="QuitButton" type="Button" parent="MainMenu/BaseMenu/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 84
+theme_override_styles/hover = SubResource("StyleBoxFlat_1t2s1")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3t1kc")
+text = "   QUIT"
+alignment = 0
+script = ExtResource("2_bw2rt")
+
+[connection signal="pressed" from="MainMenu/BaseMenu/HBoxContainer/VBoxContainer2/PlayButton" to="MainMenu/BaseMenu/HBoxContainer/VBoxContainer2/PlayButton" method="_on_pressed"]
+[connection signal="pressed" from="MainMenu/BaseMenu/HBoxContainer/VBoxContainer2/QuitButton" to="MainMenu/BaseMenu/HBoxContainer/VBoxContainer2/QuitButton" method="_on_pressed"]

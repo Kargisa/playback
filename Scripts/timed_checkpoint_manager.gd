@@ -1,52 +1,56 @@
 extends Node
 
-class_name TimedCheckpointManager
+class_name TimedObjectiveManager
 
 @export var time : float = 10.0
 
-var checkpoints : Array[TimedCheckpoint]
-var collectedCheckpoints : Array[TimedCheckpoint]
+var objectives : Array[TimedObjective]
+var collectedObjectives : Array[TimedObjective]
 
 @onready var timer : Timer = $Timer
 
-func allCheckpointsCollected() -> void:
-	print("all checkpoints collected")
+signal onObjectivesCollected
+
+func allObjectivesCollected() -> void:
+	print("All Objectives Collected")
+	onObjectivesCollected.emit()
 	
-func failedToCollectAllCheckpoints() -> void:
-	print("Faild to collect all checkpoints")
+func failedToCollectAllObjectives() -> void:
+	print("Faild to collect all objectives")
 	
-	for checkpoint in collectedCheckpoints:
-		checkpoint.resetCheckpoint()
+	for objective in collectedObjectives:
+		objective.resetObjective()
 	
-	collectedCheckpoints.clear()
+	collectedObjectives.clear()
 
 func onTimerFinished() -> void:
-	if collectedCheckpoints.size() < checkpoints.size():
-		failedToCollectAllCheckpoints()
+	if collectedObjectives.size() < objectives.size():
+		failedToCollectAllObjectives()
 		return
 
-func onCkeckpointEnter(checkpoint: TimedCheckpoint) -> void:
-	if collectedCheckpoints.size() <= 0:
+func onCkeckpointEnter(objective: TimedObjective) -> void:
+	if collectedObjectives.size() <= 0:
 		timer.start(time)
 		
-	if collectedCheckpoints.has(checkpoint):
+	if collectedObjectives.has(objective):
 		return
 		
-	collectedCheckpoints.append(checkpoint)
-	#checkpoint.collectCheckpoint()
-	print("Checkpoint collected")
+	collectedObjectives.append(objective)
+	objective.collectObjective()
 	
-	if collectedCheckpoints.size() >= checkpoints.size():
-		allCheckpointsCollected()
+	print("Objective Collected")
+	
+	if collectedObjectives.size() >= objectives.size():
+		allObjectivesCollected()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	timer.timeout.connect(onTimerFinished)
 	
 	for child in get_children():
-		if child is TimedCheckpoint:
-			var checkpoint = child as TimedCheckpoint
-			checkpoint.onCheckpintEnter.connect(onCkeckpointEnter)
-			checkpoints.append(checkpoint)
+		if child is TimedObjective:
+			var objective = child as TimedObjective
+			objective.onObjectiveEnter.connect(onCkeckpointEnter)
+			objectives.append(objective)
 	
 
 

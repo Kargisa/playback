@@ -1,18 +1,18 @@
 extends Node2D
 
-class_name TimedCheckpoint
+class_name TimedObjective
 
 
 @onready var collider : CollisionShape2D = $Area2D/CollisionShape2D
 @onready var area : Area2D = $Area2D
 
-signal onCheckpintEnter
+signal onObjectiveEnter
 
-func collectCheckpoint() -> void:
+func collectObjective() -> void:
 	hide()
 	pass
 
-func resetCheckpoint() -> void:
+func resetObjective() -> void:
 	show()
 	pass
 
@@ -20,7 +20,7 @@ func onBodyEnter(body: Node) -> void:
 	if body is not CharacterBody2D:
 		return
 	
-	onCheckpintEnter.emit(self)
+	onObjectiveEnter.emit(self)
 	pass
 
 func _ready() -> void:

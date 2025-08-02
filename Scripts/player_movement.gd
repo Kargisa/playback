@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 		actual_speed *= SPEED_MULT_WHILE_IN_AIR
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and GameManager.userHasControl:
 		started_charging.emit()
 		is_charging_jump = true
 		jump_velocity = BASE_JUMP_VELOCITY
@@ -41,7 +41,7 @@ func _physics_process(delta: float) -> void:
 	if is_charging_jump and jump_velocity > MAX_JUMP_VELOCITY:
 		jump_velocity -= 5 * CHARGING_SPEED
 
-	if Input.is_action_just_released("jump"):
+	if Input.is_action_just_released("jump") and GameManager.userHasControl:
 		stopped_charging.emit()
 		is_charging_jump = false
 		
@@ -52,7 +52,7 @@ func _physics_process(delta: float) -> void:
 	
 	var direction := Input.get_axis("move_left", "move_right")
 	
-	if direction:
+	if direction and GameManager.userHasControl:
 		
 		if !is_grounded:
 			actual_speed *= SPEED_MULT_WHILE_IN_AIR

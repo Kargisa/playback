@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://crdnmjmmbx87w"]
+
+[ext_resource type="Script" uid="uid://c7nlkyw0l5cnb" path="res://Scripts/timed_checkpoint.gd" id="1_83mjl"]
+[ext_resource type="Texture2D" uid="uid://bqel13db385xq" path="res://Assets/interactables/jubla.png" id="2_2ce2x"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2ce2x"]
+radius = 4.0
+height = 14.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82tyq"]
+atlas = ExtResource("2_2ce2x")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77xwc"]
+atlas = ExtResource("2_2ce2x")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ih43"]
+atlas = ExtResource("2_2ce2x")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flv1s"]
+atlas = ExtResource("2_2ce2x")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b7gx6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82tyq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77xwc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ih43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flv1s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="TimedObjective" type="Node2D"]
+z_index = -1
+script = ExtResource("1_83mjl")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_2ce2x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_b7gx6")
+autoplay = "default"
+
+[connection signal="property_list_changed" from="." to="." method="_on_property_list_changed"]
