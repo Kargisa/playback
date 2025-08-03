@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://xwom5hwpouls"]
+[gd_scene load_steps=22 format=3 uid="uid://xwom5hwpouls"]
 
 [ext_resource type="FontFile" uid="uid://drib8ovbrm2vg" path="res://Assets/UI/Jersey_15/Jersey15-Regular.ttf" id="1_gek4i"]
 [ext_resource type="Script" uid="uid://dyftl1t0u6dtt" path="res://Scripts/game_ui.gd" id="2_gjn1n"]
@@ -7,6 +7,19 @@
 [ext_resource type="Script" uid="uid://cw1gisdo0ddv2" path="res://Scripts/jump_charge_bar.gd" id="5_rxsu6"]
 [ext_resource type="Texture2D" uid="uid://orhbbwolninf" path="res://Assets/UI/R.png" id="6_1pjl6"]
 [ext_resource type="Texture2D" uid="uid://g8i845bj47ta" path="res://Assets/UI/R-Circle.png" id="6_y8vuf"]
+[ext_resource type="Texture2D" uid="uid://bq4xqpgka5k7p" path="res://Assets/pocket_watch/pocket_watch1.png" id="8_rxsu6"]
+[ext_resource type="Script" uid="uid://cdppkew7opuco" path="res://Scripts/pocket_watch.gd" id="9_y8vuf"]
+[ext_resource type="Texture2D" uid="uid://c08u5fto32n7k" path="res://Assets/pocket_watch/pocket_watch2.png" id="10_f26dr"]
+[ext_resource type="Texture2D" uid="uid://d3m2dp63rxpic" path="res://Assets/pocket_watch/pocket_watch3.png" id="11_nmm1h"]
+[ext_resource type="Texture2D" uid="uid://ct4a4f83xllpk" path="res://Assets/pocket_watch/pocket_watch4.png" id="12_1yk4h"]
+[ext_resource type="Texture2D" uid="uid://b8m6fvau46i3g" path="res://Assets/pocket_watch/pocket_watch5.png" id="13_6nxe7"]
+[ext_resource type="Texture2D" uid="uid://s2uwmursw1wu" path="res://Assets/pocket_watch/pocket_watch6.png" id="14_sq00d"]
+[ext_resource type="Texture2D" uid="uid://dpkputog2tf6q" path="res://Assets/pocket_watch/pocket_watch7.png" id="15_7w3vj"]
+[ext_resource type="Texture2D" uid="uid://cfjybdog4mktv" path="res://Assets/pocket_watch/pocket_watch8.png" id="16_2pit0"]
+[ext_resource type="Texture2D" uid="uid://douv3cxeomu8n" path="res://Assets/pocket_watch/pocket_watch9.png" id="17_1gkst"]
+[ext_resource type="Texture2D" uid="uid://byku4mujy3ufi" path="res://Assets/pocket_watch/pocket_watch10.png" id="18_ou877"]
+[ext_resource type="Texture2D" uid="uid://hcdg4fkvm681" path="res://Assets/pocket_watch/pocket_watch11.png" id="19_gwcid"]
+[ext_resource type="Texture2D" uid="uid://dlvqehdx6r4yw" path="res://Assets/pocket_watch/pocket_watch12.png" id="20_yqhrj"]
 
 [sub_resource type="Theme" id="Theme_bw2rt"]
 default_font = ExtResource("1_gek4i")
@@ -33,6 +46,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TextureRect" type="TextureRect" parent="GameUI"]
+custom_minimum_size = Vector2(224, 224)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+texture = ExtResource("8_rxsu6")
+script = ExtResource("9_y8vuf")
+textures = Array[Texture2D]([ExtResource("8_rxsu6"), ExtResource("10_f26dr"), ExtResource("11_nmm1h"), ExtResource("12_1yk4h"), ExtResource("13_6nxe7"), ExtResource("14_sq00d"), ExtResource("15_7w3vj"), ExtResource("16_2pit0"), ExtResource("17_1gkst"), ExtResource("18_ou877"), ExtResource("19_gwcid"), ExtResource("20_yqhrj")])
+
 [node name="JumpChargeBar" type="TextureProgressBar" parent="GameUI"]
 custom_minimum_size = Vector2(64, 256)
 layout_mode = 2
@@ -47,7 +69,7 @@ script = ExtResource("5_rxsu6")
 [node name="RestartBrogressBar" type="TextureProgressBar" parent="GameUI"]
 custom_minimum_size = Vector2(192, 192)
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
 size_flags_vertical = 8
 fill_mode = 4
 nine_patch_stretch = true

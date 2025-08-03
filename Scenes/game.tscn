@@ -410,9 +410,10 @@ offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GameUI" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("7_1l0tm")]
+[node name="GameUI" parent="CanvasLayer" node_paths=PackedStringArray("player", "recording_manager") instance=ExtResource("7_1l0tm")]
 z_index = 200
 player = NodePath("../../Player")
+recording_manager = NodePath("../../RecordingManager")
 
 [node name="Crate2" parent="." instance=ExtResource("2_h4fw4")]
 position = Vector2(7, 68)
