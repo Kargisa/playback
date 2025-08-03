@@ -5,6 +5,7 @@ class_name InteractButton
 @export var releaseDelay : float = 0.0
 var timeSinceAreaExited : float = 0.0
 var areaExited = false
+var nodesOnButton : int = 0
 
 @onready var area : Area2D = $Area2D
 @onready var sprite : Sprite2D = $Sprite2D
@@ -14,22 +15,29 @@ signal onButtonReleased
 
 func pressButton() -> void:
 	sprite.frame = 1
+	AudioManager.play_sound(AudioResource.SoundEffect.BUTTON_PRESSED)
 	onButtonPressed.emit()
 
 func releaseButton() -> void:
 	sprite.frame = 0
+	AudioManager.play_sound(AudioResource.SoundEffect.BUTTON_RELEASED)
 	onButtonReleased.emit()
 	
 
 func onAreaEntered(node : Node) -> void:
-	if node is CharacterBody2D:
-		pressButton()
-		
+	if node.is_in_group("button_interact"):
+		nodesOnButton += 1
+		if nodesOnButton == 1:
+			pressButton()
+	
 
 func onAreaExited(node : Node) -> void:
-	if node is CharacterBody2D:
-		timeSinceAreaExited = 0.0
-		areaExited = true
+	if node.is_in_group("button_interact"):
+		nodesOnButton -= 1
+		if nodesOnButton == 0:
+			timeSinceAreaExited = 0.0
+			areaExited = true
+		
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

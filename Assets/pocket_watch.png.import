@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d21u6g1we5uh0"
-path="res://.godot/imported/Tileset.png-41cc0cc84d8fdb49811c5dd1f345cfe5.ctex"
+uid="uid://bq4xqpgka5k7p"
+path="res://.godot/imported/pocket_watch.png-d5566c5a0fe6462cef87ded90d3ad8fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/tileMaps/Tileset.png"
-dest_files=["res://.godot/imported/Tileset.png-41cc0cc84d8fdb49811c5dd1f345cfe5.ctex"]
+source_file="res://Assets/pocket_watch.png"
+dest_files=["res://.godot/imported/pocket_watch.png-d5566c5a0fe6462cef87ded90d3ad8fd.ctex"]
 
 [params]
 

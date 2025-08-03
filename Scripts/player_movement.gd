@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name PlayerMovement
+
 @export var SPEED : float = 80.0
 @export var SPEED_MULT_WHILE_CHARGING : float = 0.5
 @export var SPEED_MULT_WHILE_IN_AIR : float = 1.2
@@ -8,6 +10,8 @@ extends CharacterBody2D
 @export var pushForce : float = 80.0
 @export var CHARGING_SPEED : float = 1.0
 
+var rng : RandomNumberGenerator = RandomNumberGenerator.new()
+
 signal started_charging
 signal stopped_charging
 signal landed_on_ground
@@ -15,6 +19,10 @@ signal landed_on_ground
 var is_charging_jump = false
 var jump_velocity = 0.0
 var is_grounded = false
+
+func _process(delta: float) -> void:
+	if Input.is_key_pressed(KEY_C):
+		GameManager.reaload_scene()
 
 func _physics_process(delta: float) -> void:
 	if $RecordingManager.isReverting:
@@ -47,7 +55,9 @@ func _physics_process(delta: float) -> void:
 		
 		if is_grounded:
 			velocity.y = jump_velocity
+			AudioManager.play_sound(AudioResource.SoundEffect.PLAYER_JUMP)
 		
+		jump_velocity = 0.0
 		
 	
 	var direction := Input.get_axis("move_left", "move_right")
@@ -62,10 +72,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * actual_speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		
+	
+	move_and_slide()
+	
 	for i in get_slide_collision_count():
 		var coll = get_slide_collision(i)
 		if coll.get_collider() is RigidBody2D:
 			(coll.get_collider() as RigidBody2D).apply_central_impulse(-coll.get_normal() * pushForce)
-
-	move_and_slide()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d21u6g1we5uh0"
-path="res://.godot/imported/Tileset.png-41cc0cc84d8fdb49811c5dd1f345cfe5.ctex"
+uid="uid://7hdguv4bok7i"
+path="res://.godot/imported/jump_charge_bar.png-f5e4c64abff5501e0946692240cac88e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/tileMaps/Tileset.png"
-dest_files=["res://.godot/imported/Tileset.png-41cc0cc84d8fdb49811c5dd1f345cfe5.ctex"]
+source_file="res://Assets/UI/jump_charge_bar.png"
+dest_files=["res://.godot/imported/jump_charge_bar.png-f5e4c64abff5501e0946692240cac88e.ctex"]
 
 [params]
 

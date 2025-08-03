@@ -1,3 +1,21 @@
-[gd_scene format=3 uid="uid://cntb64onvm1vr"]
+[gd_scene load_steps=3 format=3 uid="uid://cntb64onvm1vr"]
+
+[ext_resource type="PackedScene" uid="uid://xwom5hwpouls" path="res://Scenes/game_ui.tscn" id="2_8ffim"]
+[ext_resource type="PackedScene" uid="uid://cokat06qo1y4u" path="res://Scenes/player.tscn" id="3_xfk5q"]
 
 [node name="Level_1" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameUI" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("2_8ffim")]
+player = NodePath("../../Player")
+
+[node name="Player" parent="." instance=ExtResource("3_xfk5q")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+scale = Vector2(4, 4)
+offset = Vector2(0, -50)
+zoom = Vector2(5, 5)
+process_callback = 0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true

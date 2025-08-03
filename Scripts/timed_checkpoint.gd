@@ -9,6 +9,7 @@ class_name TimedObjective
 signal onObjectiveEnter
 
 func collectObjective() -> void:
+	AudioManager.play_sound(AudioResource.SoundEffect.PLAYER_EAT)
 	hide()
 	pass
 

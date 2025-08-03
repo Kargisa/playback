@@ -1,0 +1,58 @@
+[gd_scene load_steps=13 format=3 uid="uid://buudrksfn0ymb"]
+
+[ext_resource type="Script" uid="uid://d0o1sviytj78g" path="res://Scripts/audio_manager.gd" id="1_sm2tf"]
+[ext_resource type="Script" uid="uid://b6rdylmkm0nlr" path="res://Scripts/audio_resource.gd" id="2_qixve"]
+[ext_resource type="AudioStream" uid="uid://bvv6nkktowbs3" path="res://Assets/audio/jumpSound.mp3" id="3_0hehx"]
+[ext_resource type="AudioStream" uid="uid://bmds3n6a2rcho" path="res://Assets/audio/eatingSound.mp3" id="4_mjqhu"]
+[ext_resource type="AudioStream" uid="uid://duugsx5tclbkc" path="res://Assets/audio/buttonPressedSound.mp3" id="5_0hehx"]
+[ext_resource type="AudioStream" uid="uid://c88k7cuk8lvlu" path="res://Assets/audio/buttonReleasedSound.mp3" id="6_mjqhu"]
+[ext_resource type="AudioStream" uid="uid://2mp2wpp8d207" path="res://Assets/audio/door_knock.mp3" id="7_5kf6k"]
+
+[sub_resource type="Resource" id="Resource_5kf6k"]
+script = ExtResource("2_qixve")
+stream = ExtResource("3_0hehx")
+type = 0
+volume = -17
+pitchRandomnessLower = 0.85
+pitchRandomnessHigher = 1.0
+metadata/_custom_type_script = "uid://b6rdylmkm0nlr"
+
+[sub_resource type="Resource" id="Resource_tnn7g"]
+script = ExtResource("2_qixve")
+stream = ExtResource("4_mjqhu")
+type = 1
+volume = -5
+pitchRandomnessLower = 1.0
+pitchRandomnessHigher = 1.0
+metadata/_custom_type_script = "uid://b6rdylmkm0nlr"
+
+[sub_resource type="Resource" id="Resource_mjqhu"]
+script = ExtResource("2_qixve")
+stream = ExtResource("5_0hehx")
+type = 2
+volume = -10
+pitchRandomnessLower = 0.7
+pitchRandomnessHigher = 0.7
+metadata/_custom_type_script = "uid://b6rdylmkm0nlr"
+
+[sub_resource type="Resource" id="Resource_lwpe1"]
+script = ExtResource("2_qixve")
+stream = ExtResource("6_mjqhu")
+type = 3
+volume = -15
+pitchRandomnessLower = 0.8
+pitchRandomnessHigher = 0.8
+metadata/_custom_type_script = "uid://b6rdylmkm0nlr"
+
+[sub_resource type="Resource" id="Resource_jmilc"]
+script = ExtResource("2_qixve")
+stream = ExtResource("7_5kf6k")
+type = 4
+volume = 0
+pitchRandomnessLower = 1.0
+pitchRandomnessHigher = 1.0
+metadata/_custom_type_script = "uid://b6rdylmkm0nlr"
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_sm2tf")
+sounds = Array[ExtResource("2_qixve")]([SubResource("Resource_5kf6k"), SubResource("Resource_tnn7g"), SubResource("Resource_mjqhu"), SubResource("Resource_lwpe1"), SubResource("Resource_jmilc")])

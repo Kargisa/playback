@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://drdpfiu1lkjsd"
+path="res://.godot/imported/AlexiBexi INTRO [u309Z6775hg].mp3-3d1f3689dae5859fb1f099485dbb0860.mp3str"
+
+[deps]
+
+source_file="res://Assets/audio/AlexiBexi INTRO [u309Z6775hg].mp3"
+dest_files=["res://.godot/imported/AlexiBexi INTRO [u309Z6775hg].mp3-3d1f3689dae5859fb1f099485dbb0860.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

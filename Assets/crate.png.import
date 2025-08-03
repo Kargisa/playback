@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d21u6g1we5uh0"
-path="res://.godot/imported/Tileset.png-41cc0cc84d8fdb49811c5dd1f345cfe5.ctex"
+uid="uid://nh8e0qrkc43d"
+path="res://.godot/imported/crate.png-b9c1bde1c58c6e5e80e470ba210c4026.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/tileMaps/Tileset.png"
-dest_files=["res://.godot/imported/Tileset.png-41cc0cc84d8fdb49811c5dd1f345cfe5.ctex"]
+source_file="res://Assets/crate.png"
+dest_files=["res://.godot/imported/crate.png-b9c1bde1c58c6e5e80e470ba210c4026.ctex"]
 
 [params]
 

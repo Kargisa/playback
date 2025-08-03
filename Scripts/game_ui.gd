@@ -1,17 +1,19 @@
 extends Control
 
 class_name GameUI
-
-@onready var baseMenu : BaseMenu = $MainMenu/BaseMenu
+@export var player : PlayerMovement
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	GameManager.restartProgressBar = $GameUI/RestartBrogressBar
+	($GameUI/JumpChargeBar as JumpChargeBar).player = player
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("pause"):
-		GameManager.playerControl(false)
-		GameManager.showMouse(true)
-		GameManager.setTimeScale(0)
-		baseMenu.visible = true
+	var tintColor : Color = Color(1.0, 1.0, 1.0, 0.0)
+	
+	tintColor.a = clamp(GameManager.timeSinceRestartHeld / GameManager.timeToHoldRestart * 2.0, 0.0, 1.0) 
+	
+	
+	GameManager.restartProgressBar.tint_progress = tintColor
+	GameManager.restartProgressBar.tint_under = tintColor
