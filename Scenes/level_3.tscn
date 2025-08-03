@@ -395,6 +395,7 @@ drag_vertical_enabled = true
 [node name="LevelFinishDoor" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_n4vm5")]
 position = Vector2(450, 64)
 player = NodePath("../Player")
+nextLevel = "res://Scenes/level_1.tscn"
 
 [node name="Button" parent="." instance=ExtResource("5_fxnjf")]
 position = Vector2(64, 72)
@@ -427,7 +428,7 @@ time = 1.0
 position = Vector2(174, -131)
 
 [node name="TimedObjective4" parent="TimedObjectiveManager" instance=ExtResource("11_c81s1")]
-position = Vector2(240, 5)
+position = Vector2(228, 5)
 
 [node name="TimedObjective2" parent="TimedObjectiveManager" instance=ExtResource("11_c81s1")]
 position = Vector2(175, -84)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://cntb64onvm1vr"]
+[gd_scene load_steps=26 format=4 uid="uid://b1ogjx23b7qlo"]
 
 [ext_resource type="Texture2D" uid="uid://d21u6g1we5uh0" path="res://Assets/tileMaps/Tileset.png" id="1_42uki"]
 [ext_resource type="PackedScene" uid="uid://dfxdnwmo53uf7" path="res://Scenes/timed_objective_manager.tscn" id="1_t7v2y"]
@@ -409,14 +409,14 @@ drag_vertical_enabled = true
 [node name="LevelFinishDoor" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_vcilj")]
 position = Vector2(207, 64)
 player = NodePath("../Player")
-nextLevel = "/home/jann/Documents/projects/playback/Scenes/level_2.tscn"
+nextLevel = "res://Scenes/level_3.tscn"
 
 [node name="LevelManager" parent="." node_paths=PackedStringArray("door", "timedObjectives") instance=ExtResource("6_q0ycs")]
 door = NodePath("../LevelFinishDoor")
 timedObjectives = [NodePath("../TimedObjectiveManager")]
 
 [node name="RecordingManager" parent="." node_paths=PackedStringArray("ghosts_node", "player") instance=ExtResource("7_hj5x7")]
-recording_time = 4.0
+recording_time = 3.0
 ghosts_node = NodePath("../Ghosts")
 player = NodePath("../Player")
 

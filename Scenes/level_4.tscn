@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6q8glqj7fky"]
+
+[ext_resource type="Script" uid="uid://c1tel2mr48yjp" path="res://Scripts/level_4.gd" id="1_i1va2"]
+[ext_resource type="PackedScene" uid="uid://xwom5hwpouls" path="res://Scenes/game_ui.tscn" id="2_5eaas"]
+
+[node name="level_4" type="Node2D"]
+script = ExtResource("1_i1va2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0846899, 0.0846899, 0.0846899, 1)
+
+[node name="GameUI" parent="." instance=ExtResource("2_5eaas")]
+visible = false
