@@ -1,11 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3qtxpjv830en"]
+[gd_scene load_steps=6 format=3 uid="uid://b3qtxpjv830en"]
 
 [ext_resource type="Script" uid="uid://fmi8ulsu35dh" path="res://Scripts/level_finish_door.gd" id="1_d3245"]
 [ext_resource type="Texture2D" uid="uid://ejhedynfok0m" path="res://Assets/door.png" id="1_just7"]
+[ext_resource type="FontFile" uid="uid://drib8ovbrm2vg" path="res://Assets/UI/Jersey_15/Jersey15-Regular.ttf" id="3_8xk5a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d3245"]
 radius = 6.0
 height = 28.0
+
+[sub_resource type="Theme" id="Theme_2xvhn"]
+default_font = ExtResource("3_8xk5a")
+default_font_size = 56
 
 [node name="LevelFinishDoor" type="Node2D"]
 z_index = -1
@@ -20,3 +25,14 @@ hframes = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_d3245")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -5.0
+offset_top = -15.0
+offset_right = 37.0
+offset_bottom = 42.0
+scale = Vector2(0.275, 0.275)
+theme = SubResource("Theme_2xvhn")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "F"
+horizontal_alignment = 1

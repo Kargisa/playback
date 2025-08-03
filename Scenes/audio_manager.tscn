@@ -21,9 +21,9 @@ metadata/_custom_type_script = "uid://b6rdylmkm0nlr"
 script = ExtResource("2_qixve")
 stream = ExtResource("4_mjqhu")
 type = 1
-volume = -5
-pitchRandomnessLower = 1.0
-pitchRandomnessHigher = 1.0
+volume = -20
+pitchRandomnessLower = 0.8
+pitchRandomnessHigher = 0.8
 metadata/_custom_type_script = "uid://b6rdylmkm0nlr"
 
 [sub_resource type="Resource" id="Resource_mjqhu"]

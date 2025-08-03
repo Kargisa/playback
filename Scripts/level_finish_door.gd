@@ -7,6 +7,7 @@ class_name LevelFinishedDoor
 
 @onready var area: Area2D = $Area2D
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var label: Label = $Label
 
 var isOpen : bool = false
 
@@ -22,9 +23,13 @@ func _process(_delta: float) -> void:
 	else:
 		sprite.frame = 0
 	
+	label.hide()
+	
 	if not area.overlaps_body(player):
 		return
-		
+	
+	label.show()
+	
 	if not isOpen and Input.is_action_just_pressed("interact"):
 		AudioManager.play_sound(AudioResource.SoundEffect.DOOR_KNOCK)
 	elif isOpen and Input.is_action_just_pressed("interact") and player.is_on_floor():
