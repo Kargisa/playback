@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6h552k7354yo"]
+[gd_scene load_steps=3 format=3 uid="uid://bf25p7m5ciim8"]
 
 [ext_resource type="Script" uid="uid://ci1nwmmc312eq" path="res://Scripts/recording_manager.gd" id="1_u4evd"]
 [ext_resource type="PackedScene" uid="uid://byeggw2ynjpgv" path="res://Scenes/ghost.tscn" id="2_jmqh0"]

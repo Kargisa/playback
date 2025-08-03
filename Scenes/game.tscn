@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://crdnmjmmbx87w" path="res://Scenes/timed_objective.tscn" id="5_wowpa"]
 [ext_resource type="PackedScene" uid="uid://dbuqagicge7em" path="res://Scenes/button.tscn" id="6_i6g32"]
 [ext_resource type="PackedScene" uid="uid://xwom5hwpouls" path="res://Scenes/game_ui.tscn" id="7_1l0tm"]
-[ext_resource type="PackedScene" uid="uid://c6h552k7354yo" path="res://Scenes/recording_manager.tscn" id="8_v158k"]
+[ext_resource type="PackedScene" uid="uid://bf25p7m5ciim8" path="res://Scenes/recording_manager.tscn" id="8_v158k"]
 [ext_resource type="PackedScene" uid="uid://b3qtxpjv830en" path="res://Scenes/level_finish_door.tscn" id="10_ldgsr"]
 [ext_resource type="PackedScene" uid="uid://c1sjc5d4yjdps" path="res://Scenes/level_manager.tscn" id="11_o5yvi"]
 [ext_resource type="PackedScene" uid="uid://bnmr7h3g88mq6" path="res://Scenes/recording_trigger.tscn" id="12_rku1e"]
@@ -303,6 +303,13 @@ shader_parameter/chromaticAberrationOffset = 0.001
 
 [node name="Game" type="Node2D"]
 
+[node name="RecordingManager" parent="." node_paths=PackedStringArray("ghosts_node", "player") instance=ExtResource("8_v158k")]
+ghosts_node = NodePath("../Ghosts")
+player = NodePath("../Player")
+
+[node name="RecordingTrigger" parent="RecordingManager" instance=ExtResource("12_rku1e")]
+position = Vector2(-52, 72)
+
 [node name="ParallaxForground" type="ParallaxBackground" parent="."]
 layer = 0
 
@@ -413,10 +420,3 @@ buttons = [NodePath("../Button")]
 timedObjectives = [NodePath("../TimedCheckpointManager")]
 
 [node name="Ghosts" type="Node" parent="."]
-
-[node name="RecordingManager" parent="." node_paths=PackedStringArray("ghosts_node", "player") instance=ExtResource("8_v158k")]
-ghosts_node = NodePath("../Ghosts")
-player = NodePath("../Player")
-
-[node name="RecordingTrigger" parent="RecordingManager" instance=ExtResource("12_rku1e")]
-position = Vector2(-52, 72)
