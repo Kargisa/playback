@@ -397,6 +397,7 @@ door = NodePath("../LevelFinishDoor")
 buttons = [NodePath("../Button")]
 
 [node name="RecordingManager" parent="." node_paths=PackedStringArray("ghosts_node", "player") instance=ExtResource("7_xrdnt")]
+recording_time = 1.0
 ghosts_node = NodePath("../Ghosts")
 player = NodePath("../Player")
 
