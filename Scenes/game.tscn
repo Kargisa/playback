@@ -303,10 +303,6 @@ shader_parameter/chromaticAberrationOffset = 0.001
 
 [node name="Game" type="Node2D"]
 
-[node name="RecordingManager" parent="." node_paths=PackedStringArray("ghosts_node", "player") instance=ExtResource("8_v158k")]
-ghosts_node = NodePath("../Ghosts")
-player = NodePath("../Player")
-
 [node name="ParallaxForground" type="ParallaxBackground" parent="."]
 layer = 0
 
@@ -386,8 +382,6 @@ position = Vector2(90, 68)
 [node name="Button" parent="." instance=ExtResource("6_i6g32")]
 position = Vector2(7, 72)
 
-[node name="GameManager" parent="." instance=ExtResource("8_v158k")]
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
@@ -420,6 +414,9 @@ timedObjectives = [NodePath("../TimedCheckpointManager")]
 
 [node name="Ghosts" type="Node" parent="."]
 
-[node name="RecordingTrigger" parent="." node_paths=PackedStringArray("recording_manager") instance=ExtResource("12_rku1e")]
-position = Vector2(-43, 72)
-recording_manager = NodePath("../RecordingManager")
+[node name="RecordingManager" parent="." node_paths=PackedStringArray("ghosts_node", "player") instance=ExtResource("8_v158k")]
+ghosts_node = NodePath("../Ghosts")
+player = NodePath("../Player")
+
+[node name="RecordingTrigger" parent="RecordingManager" instance=ExtResource("12_rku1e")]
+position = Vector2(-52, 72)

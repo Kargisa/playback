@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://c6h552k7354yo"]
 
-[ext_resource type="Script" uid="uid://ci1nwmmc312eq" path="res://Scripts/recording_manager.gd" id="1_oj352"]
+[ext_resource type="Script" uid="uid://ci1nwmmc312eq" path="res://Scripts/recording_manager.gd" id="1_u4evd"]
 [ext_resource type="PackedScene" uid="uid://byeggw2ynjpgv" path="res://Scenes/ghost.tscn" id="2_jmqh0"]
 
 [node name="RecordingManager" type="Node"]
-script = ExtResource("1_oj352")
+script = ExtResource("1_u4evd")
 ghost_scene = ExtResource("2_jmqh0")
 
 [node name="Timer" type="Timer" parent="."]

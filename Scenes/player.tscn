@@ -198,8 +198,7 @@ rotation = 1.5708
 scale = Vector2(0.5, 1)
 shape = SubResource("SegmentShape2D_3smsa")
 
-[node name="RecordingManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_6t5aa")]
-player = NodePath("..")
+[node name="RecordingManager" parent="." instance=ExtResource("3_6t5aa")]
 
 [connection signal="landed_on_ground" from="." to="AnimatedSprite2D" method="_on_player_landed_on_ground"]
 [connection signal="started_charging" from="." to="AnimatedSprite2D" method="_on_player_started_charging"]

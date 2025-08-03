@@ -32,6 +32,11 @@ var recording_id : int = -1
 var current_frame : int = 0
 var frames_recorded : int = 0
 
+func _ready() -> void:
+	for child in get_children():
+		if child is RecordingTrigger:
+			(child as RecordingTrigger).recording_manager = self
+
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("play_recording"):
 		if player_recordings.is_empty():
