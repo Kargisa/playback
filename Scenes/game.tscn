@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://btw3h1tkkk0xt"]
+[gd_scene load_steps=28 format=4 uid="uid://btw3h1tkkk0xt"]
 
 [ext_resource type="PackedScene" uid="uid://cokat06qo1y4u" path="res://Scenes/player.tscn" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://cakbjgleqn287" path="res://Scenes/crate.tscn" id="2_h4fw4"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c6h552k7354yo" path="res://Scenes/recording_manager.tscn" id="8_v158k"]
 [ext_resource type="PackedScene" uid="uid://b3qtxpjv830en" path="res://Scenes/level_finish_door.tscn" id="10_ldgsr"]
 [ext_resource type="PackedScene" uid="uid://c1sjc5d4yjdps" path="res://Scenes/level_manager.tscn" id="11_o5yvi"]
+[ext_resource type="PackedScene" uid="uid://bnmr7h3g88mq6" path="res://Scenes/recording_trigger.tscn" id="12_rku1e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i6g32"]
 texture = ExtResource("3_wrm1d")
@@ -302,6 +303,10 @@ shader_parameter/chromaticAberrationOffset = 0.001
 
 [node name="Game" type="Node2D"]
 
+[node name="RecordingManager" parent="." node_paths=PackedStringArray("ghosts_node", "player") instance=ExtResource("8_v158k")]
+ghosts_node = NodePath("../Ghosts")
+player = NodePath("../Player")
+
 [node name="ParallaxForground" type="ParallaxBackground" parent="."]
 layer = 0
 
@@ -412,3 +417,9 @@ nextLevel = "res://Scenes/level_1.tscn"
 door = NodePath("../LevelFinishDoor")
 buttons = [NodePath("../Button")]
 timedObjectives = [NodePath("../TimedCheckpointManager")]
+
+[node name="Ghosts" type="Node" parent="."]
+
+[node name="RecordingTrigger" parent="." node_paths=PackedStringArray("recording_manager") instance=ExtResource("12_rku1e")]
+position = Vector2(-43, 72)
+recording_manager = NodePath("../RecordingManager")

@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://lxbchcunymel"]
+
+[ext_resource type="Script" uid="uid://bj6smd3yqstc4" path="res://Scripts/recording_button.gd" id="1_mtw10"]
+[ext_resource type="Texture2D" uid="uid://b3yyeega471vd" path="res://Assets/interactables/button.png" id="2_8gv35"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1cmwl"]
+radius = 1.035
+height = 7.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0kpiu"]
+rough = true
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lkjnc"]
+radius = 1.0
+height = 10.9999
+
+[node name="RecordingButton" type="Node2D"]
+z_index = -1
+script = ExtResource("1_mtw10")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_8gv35")
+hframes = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(4.965, -0.5)
+shape = SubResource("CapsuleShape2D_1cmwl")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0.5, 0)
+rotation = 1.5708
+physics_material_override = SubResource("PhysicsMaterial_0kpiu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(7, 0)
+shape = SubResource("CapsuleShape2D_lkjnc")

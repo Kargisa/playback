@@ -9,7 +9,7 @@ friction = 0.5
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7brft"]
 size = Vector2(16, 16)
 
-[node name="Crate" type="RigidBody2D" groups=["button_interact"]]
+[node name="Crate" type="RigidBody2D" groups=["button_interact", "rewindables"]]
 mass = 4.0
 physics_material_override = SubResource("PhysicsMaterial_i4r3v")
 script = ExtResource("1_i4r3v")

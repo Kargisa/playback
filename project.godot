@@ -34,7 +34,9 @@ enabled=PackedStringArray()
 [global_group]
 
 button_interact=""
-player=""
+player="spieler"
+rewindables="objects tracked by recording manager"
+ghosts="geister"
 
 [input]
 

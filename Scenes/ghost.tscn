@@ -167,7 +167,7 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="Ghost" type="CharacterBody2D" groups=["ghosts"]]
+[node name="Ghost" type="CharacterBody2D" groups=["button_interact", "ghosts"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6t5aa")
