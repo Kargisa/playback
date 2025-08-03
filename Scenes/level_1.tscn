@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bf25p7m5ciim8" path="res://Scenes/recording_manager.tscn" id="7_xrdnt"]
 [ext_resource type="PackedScene" uid="uid://bnmr7h3g88mq6" path="res://Scenes/recording_trigger.tscn" id="8_wrinw"]
 [ext_resource type="FontFile" uid="uid://drib8ovbrm2vg" path="res://Assets/UI/Jersey_15/Jersey15-Regular.ttf" id="9_wrinw"]
-[ext_resource type="Script" uid="uid://1eqhbb03ys4i" path="res://Scripts/tutorial_trigger.gd" id="10_chwpn"]
+[ext_resource type="Script" path="res://Scripts/tutorial_trigger.gd" id="10_chwpn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7p6j4"]
 texture = ExtResource("1_xfk5q")

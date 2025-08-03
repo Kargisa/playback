@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Playback"
-run/main_scene="uid://btw3h1tkkk0xt"
+run/main_scene="uid://cntb64onvm1vr"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 

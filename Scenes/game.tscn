@@ -433,7 +433,6 @@ position = Vector2(129, 44)
 [node name="LevelFinishDoor" parent="." node_paths=PackedStringArray("player") instance=ExtResource("10_ldgsr")]
 position = Vector2(167, 64)
 player = NodePath("../Player")
-nextLevel = "res://Scenes/level_1.tscn"
 
 [node name="LevelManager" parent="." node_paths=PackedStringArray("door", "buttons", "timedObjectives") instance=ExtResource("11_o5yvi")]
 door = NodePath("../LevelFinishDoor")
