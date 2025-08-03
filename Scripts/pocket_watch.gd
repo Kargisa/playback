@@ -25,10 +25,10 @@ func _process(delta: float) -> void:
 	if recording_manager.state == RecordingManager.State.REWINDING:
 		rewindTime = recording_manager.timer.wait_time / recording_manager.rewind_speed
 		timeSinceRewindStart += delta
-		texture = textures[(1.0 - timeSinceRewindStart / rewindTime) * textures.size() - 1]
+		texture = textures[clamp((1.0 - timeSinceRewindStart / rewindTime) * textures.size() - 1, 0, 12)]
 		return
 	else:
 		timeSinceRewindStart = 0.0
 	
 	
-	texture = textures[abs(((recording_manager.timer.wait_time - recording_manager.timer.time_left) / recording_manager.timer.wait_time) * (textures.size()))]
+	texture = textures[clamp(abs(((recording_manager.timer.wait_time - recording_manager.timer.time_left) / recording_manager.timer.wait_time) * (textures.size())), 0, 12)]

@@ -11,7 +11,7 @@
 [ext_resource type="FontFile" uid="uid://drib8ovbrm2vg" path="res://Assets/UI/Jersey_15/Jersey15-Regular.ttf" id="9_wrinw"]
 [ext_resource type="Script" path="res://Scripts/tutorial_trigger.gd" id="10_chwpn"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7p6j4"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_chwpn"]
 texture = ExtResource("1_xfk5q")
 16:21/size_in_atlas = Vector2i(3, 3)
 16:21/0 = 0
@@ -33,9 +33,9 @@ texture = ExtResource("1_xfk5q")
 23:18/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_6444e"]
-sources/0 = SubResource("TileSetAtlasSource_7p6j4")
+sources/0 = SubResource("TileSetAtlasSource_chwpn")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_evi0p"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_af3po"]
 texture = ExtResource("1_xfk5q")
 0:0/0 = 0
 1:0/0 = 0
@@ -134,9 +134,9 @@ texture = ExtResource("1_xfk5q")
 10:10/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_lsmp6"]
-sources/0 = SubResource("TileSetAtlasSource_evi0p")
+sources/0 = SubResource("TileSetAtlasSource_af3po")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xrdnt"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uy8f0"]
 texture = ExtResource("1_xfk5q")
 0:0/0 = 0
 0:1/0 = 0
@@ -167,9 +167,9 @@ texture = ExtResource("1_xfk5q")
 9:9/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_wrinw"]
-sources/0 = SubResource("TileSetAtlasSource_xrdnt")
+sources/0 = SubResource("TileSetAtlasSource_uy8f0")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_chwpn"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6r07y"]
 texture = ExtResource("1_xfk5q")
 21:0/0 = 0
 22:0/0 = 0
@@ -219,9 +219,9 @@ texture = ExtResource("1_xfk5q")
 16:7/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_af3po"]
-sources/0 = SubResource("TileSetAtlasSource_chwpn")
+sources/0 = SubResource("TileSetAtlasSource_6r07y")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uy8f0"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ioyp"]
 texture = ExtResource("1_xfk5q")
 17:19/0 = 0
 22:18/0 = 0
@@ -252,18 +252,18 @@ texture = ExtResource("1_xfk5q")
 3:21/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_6r07y"]
-sources/0 = SubResource("TileSetAtlasSource_uy8f0")
+sources/0 = SubResource("TileSetAtlasSource_6ioyp")
 
-[sub_resource type="Gradient" id="Gradient_wrm1d"]
+[sub_resource type="Gradient" id="Gradient_oovug"]
 offsets = PackedFloat32Array(0, 0.782123)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_6ioyp"]
-gradient = SubResource("Gradient_wrm1d")
+gradient = SubResource("Gradient_oovug")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oovug"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8i23i"]
 texture = ExtResource("1_xfk5q")
 0:4/0 = 0
 0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -318,7 +318,7 @@ texture = ExtResource("1_xfk5q")
 
 [sub_resource type="TileSet" id="TileSet_8i23i"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_oovug")
+sources/0 = SubResource("TileSetAtlasSource_8i23i")
 
 [sub_resource type="Theme" id="Theme_chwpn"]
 default_font = ExtResource("9_wrinw")
