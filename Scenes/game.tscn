@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c1sjc5d4yjdps" path="res://Scenes/level_manager.tscn" id="11_o5yvi"]
 [ext_resource type="PackedScene" uid="uid://bnmr7h3g88mq6" path="res://Scenes/recording_trigger.tscn" id="12_rku1e"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i6g32"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rku1e"]
 texture = ExtResource("3_wrm1d")
 16:21/size_in_atlas = Vector2i(3, 3)
 16:21/0 = 0
@@ -35,9 +35,9 @@ texture = ExtResource("3_wrm1d")
 23:18/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_1l0tm"]
-sources/0 = SubResource("TileSetAtlasSource_i6g32")
+sources/0 = SubResource("TileSetAtlasSource_rku1e")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h4fw4"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rfjv2"]
 texture = ExtResource("3_wrm1d")
 0:0/0 = 0
 1:0/0 = 0
@@ -133,9 +133,9 @@ texture = ExtResource("3_wrm1d")
 18:23/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_ldgsr"]
-sources/0 = SubResource("TileSetAtlasSource_h4fw4")
+sources/0 = SubResource("TileSetAtlasSource_rfjv2")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wrm1d"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1phco"]
 texture = ExtResource("3_wrm1d")
 0:0/0 = 0
 0:1/0 = 0
@@ -166,9 +166,9 @@ texture = ExtResource("3_wrm1d")
 9:9/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_3dryh"]
-sources/0 = SubResource("TileSetAtlasSource_wrm1d")
+sources/0 = SubResource("TileSetAtlasSource_1phco")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v158k"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nb51f"]
 texture = ExtResource("3_wrm1d")
 21:0/0 = 0
 22:0/0 = 0
@@ -218,9 +218,9 @@ texture = ExtResource("3_wrm1d")
 16:7/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_v158k"]
-sources/0 = SubResource("TileSetAtlasSource_v158k")
+sources/0 = SubResource("TileSetAtlasSource_nb51f")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3dryh"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nnt18"]
 texture = ExtResource("3_wrm1d")
 17:19/0 = 0
 22:18/0 = 0
@@ -251,18 +251,18 @@ texture = ExtResource("3_wrm1d")
 3:21/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_wowpa"]
-sources/0 = SubResource("TileSetAtlasSource_3dryh")
+sources/0 = SubResource("TileSetAtlasSource_nnt18")
 
-[sub_resource type="Gradient" id="Gradient_wrm1d"]
+[sub_resource type="Gradient" id="Gradient_ewbju"]
 offsets = PackedFloat32Array(0, 0.782123)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_3dryh"]
-gradient = SubResource("Gradient_wrm1d")
+gradient = SubResource("Gradient_ewbju")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wowpa"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_85qyi"]
 texture = ExtResource("3_wrm1d")
 0:4/0 = 0
 0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -293,7 +293,7 @@ texture = ExtResource("3_wrm1d")
 
 [sub_resource type="TileSet" id="TileSet_i6g32"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_wowpa")
+sources/0 = SubResource("TileSetAtlasSource_85qyi")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wrm1d"]
 shader = ExtResource("2_qxrlw")

@@ -5,7 +5,7 @@ extends Node
 var userHasControl = true
 var playerIsRewinding = false
 
-const timeToHoldRestart : float = 4.0
+const timeToHoldRestart : float = 3.0
 var timeSinceRestartHeld : float = 0.0
 
 func quit() -> void:
