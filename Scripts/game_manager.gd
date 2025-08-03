@@ -3,7 +3,7 @@ extends Node
 @onready var restartProgressBar : TextureProgressBar
 
 var userHasControl = true
-var isRewinding = false
+var playerIsRewinding = false
 
 const timeToHoldRestart : float = 4.0
 var timeSinceRestartHeld : float = 0.0
@@ -14,9 +14,8 @@ func quit() -> void:
 func setTimeScale(scale: float) -> void:
 	Engine.time_scale = scale
 	
-func set_rewinding(r: bool) -> void:
-	GameManager.userHasControl = not r
-	GameManager.isRewinding = r
+func set_player_rewinding(r: bool) -> void:
+	GameManager.playerIsRewinding = r
 
 func playerControl(control: bool) -> void:
 	userHasControl = control

@@ -29,7 +29,7 @@ func _process(_delta: float) -> void:
 	if not player_node:
 		return
 
-	if GameManager.isRewinding:
+	if GameManager.playerIsRewinding:
 		return
 	
 	if player_node.velocity.x != 0:

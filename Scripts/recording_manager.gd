@@ -9,12 +9,14 @@ enum State {
 	PLAYING,
 	RECORDING,
 	REWINDING,
+	PAUSED
 }
 
 signal stopped_rewinding
 
 @onready var timer: Timer = $Timer
 
+@export var rewind_speed: float = 1.0
 @export var ghosts_node : Node
 @export var player : CharacterBody2D
 var player_sprite : PlayerAnimationManager
@@ -24,7 +26,7 @@ var initial_objs : Array[Node]
 var player_recordings : Dictionary[int, Array] = {}
 var object_recordings : Dictionary[int, Array] = {}
 
-var ghosts : Array[CharacterBody2D]
+var ghosts : Dictionary[int, CharacterBody2D]
 
 var state : State = State.IDLE
 var should_rewind_player : bool = false
@@ -51,17 +53,15 @@ func _process(delta: float) -> void:
 			_:
 				return
 		
-		print("bingus")
-		
-		for i in player_recordings:
-			var ghost = ghost_scene.instantiate() as CharacterBody2D
-			
-			ghost.global_position = player_recordings[i][0].position
-			
-			ghosts_node.add_child(ghost)
-			ghosts.append(ghost)
-			
+		spawn_ghosts()	
 		state = State.PLAYING
+		current_frame = 0
+	if Input.is_action_just_pressed("pause_playback"):
+		match state:
+			State.PLAYING:
+				state = State.PAUSED
+			State.PAUSED:
+				state = State.PLAYING
 
 func _physics_process(delta: float) -> void:
 	match state:
@@ -69,28 +69,34 @@ func _physics_process(delta: float) -> void:
 			record_player()
 			record_objects()
 			
-			# TODO: playback_ghosts
+			playback_ghosts()
 			
 			current_frame += 1
 		State.REWINDING:
-			current_frame -= 1
+			current_frame -= 1 * rewind_speed
 			
 			if should_rewind_player:
 				rewind_player()
+			if !ghosts.is_empty():
+				playback_ghosts()
 			
 			rewind_objects()
-#			# rewind_ghosts()
 			
 			if current_frame <= 0: 
 				stop_rewinding()
+				clear_ghosts()
 				return
 		State.PLAYING:
-			if current_frame >= frames_recorded:
-				#start_rewinding()
+			if current_frame >= frames_recorded - 1:
+				start_rewinding(false)
 				return
 			
 			playback_ghosts()
 			record_objects()
+			
+			current_frame += 1
+		State.PAUSED:
+			return
 		
 	
 func record_player() -> void:
@@ -151,21 +157,29 @@ func rewind_objects() -> void:
 
 func playback_ghosts() -> void:
 	for key in player_recordings:
+		if key == recording_id:
+			continue
+		
+		if player_recordings[key].size() <= current_frame:
+			continue
+		
 		var data = player_recordings[key][current_frame] as FrameData
+		
+		var ghost = ghosts[key]
+		var ghost_sprite = ghost.find_child("AnimatedSprite2D") as AnimatedSprite2D
 
-		#player.global_position = data.position
-		#player.global_rotation = data.rotation
-		#player_sprite.flip_h = data.flip_h
-		#player_sprite.animation = data.animation_name
-		#player_sprite.frame = data.animation_frame
+		ghost.global_position = data.position
+		ghost.global_rotation = data.rotation
+		if ghost_sprite:
+			ghost_sprite.flip_h = data.flip_h
+			ghost_sprite.animation = data.animation_name
+			ghost_sprite.frame = data.animation_frame
 
-	pass
-	
 func rewind_ghosts() -> void:
 	pass
 	
 func start_recording(rec_id: int) -> void:
-	if state == State.RECORDING or state == State.REWINDING:
+	if !state == State.IDLE:
 		return
 	
 	if not player:
@@ -180,8 +194,12 @@ func start_recording(rec_id: int) -> void:
 		print("couldn't get player sprite")
 		return
 	
-	clear_recording_and_reset(rec_id)
 	recording_id = rec_id
+	if player_recordings.get(recording_id):
+		player_recordings[recording_id].clear()
+	
+	spawn_ghosts()
+	
 	current_frame = 0
 	state = State.RECORDING
 	
@@ -194,26 +212,42 @@ func stop_recording() -> void:
 	frames_recorded = player_recordings[recording_id].size()
 	print("stopped recording ", current_frame)
 
-func clear_recording_and_reset(rec_id: int) -> void:
-	print("clear recording", rec_id)
-	
-func start_rewinding() -> void:
-	disable_objects_collisions(true)
+func start_rewinding(rewind_player: bool) -> void:
+	#disable_objects_collisions(true)
 	freeze_rigidbodies(true)
-	GameManager.set_rewinding(true)
+	GameManager.set_player_rewinding(rewind_player)
+	GameManager.playerControl(not rewind_player)
+	should_rewind_player = rewind_player
 	state = State.REWINDING
+	
 	print("start rewinding")
 
 func stop_rewinding() -> void:
-	disable_objects_collisions(false)
+	#disable_objects_collisions(false)
 	freeze_rigidbodies(false)
 	
 	current_frame = 0
 	recording_id = -1
 	state = State.IDLE
-	GameManager.set_rewinding(false)
+	GameManager.set_player_rewinding(false)
+	GameManager.playerControl(true)
 	player_sprite.reset_to_idle() # BIST DU DEPPAT ICCH HASSE MEINEN CODE EINFACCH VERBRENNSNENNESKDJN
 	object_recordings.clear()
+
+func spawn_ghosts() -> void:
+	for i in player_recordings:
+		if i == recording_id:
+			continue
+		
+		var ghost = ghost_scene.instantiate() as CharacterBody2D
+		ghost.global_position = player_recordings[i][0].position
+		ghosts_node.add_child(ghost)
+		ghosts[i] = ghost
+		
+func clear_ghosts() -> void:
+	for ghost in ghosts:
+		ghosts[ghost].queue_free()
+	ghosts.clear()
 
 func disable_objects_collisions(value: bool) -> void:
 	for obj in objs:
@@ -240,4 +274,5 @@ func is_ein_jürgen(object: Node, id: int) -> bool:
 
 func _on_timer_timeout() -> void:
 	stop_recording()
-	start_rewinding()
+	start_rewinding(true)
+	GameManager.playerControl(false)
