@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 class_name PlayerMovement
 
@@ -25,9 +26,6 @@ func _process(delta: float) -> void:
 		GameManager.reaload_scene()
 
 func _physics_process(delta: float) -> void:
-	if $RecordingManager.isReverting:
-		return
-		
 	var actual_speed = SPEED
 	
 	if not is_grounded and is_on_floor():
@@ -41,7 +39,7 @@ func _physics_process(delta: float) -> void:
 		actual_speed *= SPEED_MULT_WHILE_IN_AIR
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and GameManager.userHasControl:
+	if Input.is_action_just_pressed("jump") and GameGlobals.userHasControl:
 		started_charging.emit()
 		is_charging_jump = true
 		jump_velocity = BASE_JUMP_VELOCITY
@@ -49,7 +47,7 @@ func _physics_process(delta: float) -> void:
 	if is_charging_jump and jump_velocity > MAX_JUMP_VELOCITY:
 		jump_velocity -= 5 * CHARGING_SPEED
 
-	if Input.is_action_just_released("jump") and GameManager.userHasControl:
+	if Input.is_action_just_released("jump") and GameGlobals.userHasControl:
 		stopped_charging.emit()
 		is_charging_jump = false
 		
@@ -62,7 +60,7 @@ func _physics_process(delta: float) -> void:
 	
 	var direction := Input.get_axis("move_left", "move_right")
 	
-	if direction and GameManager.userHasControl:
+	if direction and GameGlobals.userHasControl:
 		
 		if !is_grounded:
 			actual_speed *= SPEED_MULT_WHILE_IN_AIR

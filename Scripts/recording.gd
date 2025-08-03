@@ -43,12 +43,12 @@ func _physics_process(delta: float) -> void:
 	
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("start_recording") and GameManager.userHasControl:
+	if Input.is_action_just_pressed("start_recording") and GameGlobals.userHasControl:
 		print("start recording")
 		recording.clear()
 		recordLength = 0
 		isRecording = true
-	elif Input.is_action_just_pressed("play_recording") and !isRecording and !isPlaying and GameManager.userHasControl:
+	elif Input.is_action_just_pressed("play_recording") and !isRecording and !isPlaying and GameGlobals.userHasControl:
 		print("play recording")
 		isPlaying = true
 		var instance = recordingBody.instantiate()

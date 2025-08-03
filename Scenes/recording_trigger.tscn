@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnmr7h3g88mq6"]
+
+[ext_resource type="PackedScene" uid="uid://dbuqagicge7em" path="res://Scenes/button.tscn" id="1_l7rpd"]
+[ext_resource type="Script" uid="uid://dbepi2oqb0h27" path="res://Scripts/recording_trigger.gd" id="1_vhfhy"]
+
+[node name="RecordingTrigger" type="Node2D"]
+script = ExtResource("1_vhfhy")
+
+[node name="Button" parent="." instance=ExtResource("1_l7rpd")]
+
+[connection signal="onButtonPressed" from="Button" to="." method="_on_button_on_button_pressed"]
+[connection signal="onButtonReleased" from="Button" to="." method="_on_button_on_button_released"]

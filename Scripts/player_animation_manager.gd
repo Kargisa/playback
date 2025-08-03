@@ -1,8 +1,9 @@
 extends AnimatedSprite2D
+class_name PlayerAnimationManager
 
 @export var player_node: CharacterBody2D
-@export var falling_velocity_thresholds : Array[float] = [120.0, 280.0]
-@export var jumping_velocity_thresholds : Array[float] = [120.0, 200.0, 280.0]
+@export var falling_velocity_thresholds: Array[float] = [120.0, 280.0]
+@export var jumping_velocity_thresholds: Array[float] = [120.0, 200.0, 280.0]
 
 enum PlayerState {
 	IDLE,
@@ -27,6 +28,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if not player_node:
 		return
+
+	if GameGlobals.isRewinding:
+		return
 	
 	if player_node.velocity.x != 0:
 			flip_h = player_node.velocity.x > 0
@@ -43,7 +47,7 @@ func _process(_delta: float) -> void:
 		if player_node.velocity.x != 0:
 			set_state(PlayerState.RUN)
 		else:
-			set_state(PlayerState.IDLE)	
+			set_state(PlayerState.IDLE)
 	else:
 		if player_node.velocity.y < 0:
 			set_state(PlayerState.JUMP)
@@ -52,7 +56,7 @@ func _process(_delta: float) -> void:
 	
 func _on_player_started_charging() -> void:
 	player_is_charging = true
-	if not is_playing_splat and player_node.is_on_floor(): 
+	if not is_playing_splat and player_node.is_on_floor():
 		set_state(PlayerState.CHARGING)
 
 func _on_player_stopped_charging() -> void:
@@ -74,7 +78,7 @@ func _on_animation_finished() -> void:
 
 func set_state(new_state):
 	if current_state == new_state:
-		return 
+		return
 		
 	current_state = new_state
 	play_animation(current_state)
@@ -126,3 +130,9 @@ func play_animation(state: PlayerState):
 	
 	play(anim_name)
 	update_velocity_based_animations()
+
+func reset_to_idle():
+	current_state = PlayerState.IDLE
+	player_is_charging = false
+	is_playing_splat = false
+	play_animation(PlayerState.IDLE)
