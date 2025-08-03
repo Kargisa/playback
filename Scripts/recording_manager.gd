@@ -17,6 +17,8 @@ signal stopped_rewinding
 @onready var timer: Timer = $Timer
 
 @export var rewind_speed: float = 1.0
+@export var recording_time: float = 5.0
+
 @export var ghosts_node : Node
 @export var player : CharacterBody2D
 var player_sprite : PlayerAnimationManager
@@ -38,6 +40,8 @@ func _ready() -> void:
 	for child in get_children():
 		if child is RecordingTrigger:
 			(child as RecordingTrigger).recording_manager = self
+			
+	timer.wait_time = recording_time
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("play_recording"):
