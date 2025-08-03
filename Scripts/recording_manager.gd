@@ -195,7 +195,7 @@ func clear_recording_and_reset(rec_id: int) -> void:
 func start_rewinding() -> void:
 	disable_objects_collisions(true)
 	freeze_rigidbodies(true)
-	GameGlobals.set_rewinding(true)
+	GameManager.set_rewinding(true)
 	state = State.REWINDING
 	print("start rewinding")
 
@@ -206,7 +206,7 @@ func stop_rewinding() -> void:
 	current_frame = 0
 	recording_id = -1
 	state = State.IDLE
-	GameGlobals.set_rewinding(false)
+	GameManager.set_rewinding(false)
 	player_sprite.reset_to_idle() # BIST DU DEPPAT ICCH HASSE MEINEN CODE EINFACCH VERBRENNSNENNESKDJN
 	object_recordings.clear()
 

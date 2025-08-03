@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dddb3ymcdl8xs" path="res://Scripts/player_movement.gd" id="1_6t5aa"]
 [ext_resource type="Shader" uid="uid://cxbyisprd6l3o" path="res://Shaders/player.gdshader" id="2_8erm5"]
-[ext_resource type="PackedScene" uid="uid://c6s3nugg8n816" path="res://Scenes/recording_manager.tscn" id="3_6t5aa"]
+[ext_resource type="PackedScene" uid="uid://c6h552k7354yo" path="res://Scenes/recording_manager.tscn" id="3_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://cxsipwwxvnb0a" path="res://Assets/slime/basic_slime_charging.png" id="3_fkybt"]
 [ext_resource type="Texture2D" uid="uid://cxe7e32hg74r3" path="res://Assets/slime/basic_slime_idle.png" id="3_vgqql"]
 [ext_resource type="Texture2D" uid="uid://bkur8fydpuhcj" path="res://Assets/slime/basic_slime_running_high.png" id="5_fkybt"]
